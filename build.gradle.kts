@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     kotlin("jvm")
     id("fabric-loom")
@@ -9,11 +11,10 @@ group = property("maven_group")!!
 version = property("mod_version")!!
 
 repositories {
-    // Add repositories to retrieve artifacts from in here.
-    // You should only use this when depending on other mods because
-    // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-    // See https://docs.gradle.org/current/userguide/declaring_repositories.html
-    // for more information about repositories.
+    maven("https://api.modrinth.com/maven")
+    maven("https://maven.shedaniel.me/")
+    maven("https://maven.terraformersmc.com/releases/")
+    maven("https://maven.kosmx.dev/")
 }
 
 dependencies {
@@ -23,6 +24,13 @@ dependencies {
 
     modImplementation("net.fabricmc:fabric-language-kotlin:${property("fabric_kotlin_version")}")
     modImplementation("net.fabricmc.fabric-api:fabric-api:${property("fabric_api_version")}")
+
+
+    modImplementation("maven.modrinth:better-combat:${property("better_combat_version")}-fabric")
+    modApi("me.shedaniel.cloth:cloth-config-fabric:${property("cloth_config_version")}") {
+        exclude(group="net.fabricmc.fabric-api")
+    }
+    include(modImplementation("dev.kosmx.player-anim:player-animation-lib-fabric:${property("player_animator_version")}")!!)
 }
 
 tasks {
@@ -58,8 +66,15 @@ tasks {
         }
     }
 
-    compileKotlin {
-        kotlinOptions.jvmTarget = "21"
+
+    kotlin {
+        sourceSets.all {
+            languageSettings.enableLanguageFeature("ExplicitBackingFields")
+        }
+
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_17)
+        }
     }
 
 }
