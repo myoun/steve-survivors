@@ -11,7 +11,8 @@ object PlayerStats {
 
     object Health: PlayerStat {
         override val id: Identifier = Identifier(SteveSurvivors.ID, "health")
-        override val type: StatValueType<Int> = StatValueType.Integer
+        override val type: StatValueType = StatValueType.Integer
+        override val defaultValue: Int = 30
     }
 }
 

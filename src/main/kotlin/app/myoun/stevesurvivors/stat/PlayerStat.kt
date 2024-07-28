@@ -8,5 +8,6 @@ interface PlayerStat {
     val id: Identifier
     val description: Text
         get() = Text.translatable("stat.${id.namespace}.${id.path}.description")
-    val type: StatValueType<*>
+    val type: StatValueType
+    val defaultValue: Any
 }

@@ -31,6 +31,8 @@ dependencies {
         exclude(group="net.fabricmc.fabric-api")
     }
     include(modImplementation("dev.kosmx.player-anim:player-animation-lib-fabric:${property("player_animator_version")}")!!)
+
+    modImplementation("maven.modrinth:attributefix:${property("attribute_fix_version")}")
 }
 
 tasks {
