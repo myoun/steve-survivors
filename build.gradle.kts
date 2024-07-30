@@ -15,6 +15,7 @@ repositories {
     maven("https://maven.shedaniel.me/")
     maven("https://maven.terraformersmc.com/releases/")
     maven("https://maven.kosmx.dev/")
+    maven("https://maven.ladysnake.org/releases")
 }
 
 dependencies {
@@ -33,6 +34,7 @@ dependencies {
     include(modImplementation("dev.kosmx.player-anim:player-animation-lib-fabric:${property("player_animator_version")}")!!)
 
     modImplementation("maven.modrinth:attributefix:${property("attribute_fix_version")}")
+    modImplementation("dev.emi:trinkets:${property("trinkets_version")}")
 }
 
 tasks {
