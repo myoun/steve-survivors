@@ -2,5 +2,9 @@
   "item.stevesurvivors.rune": "Rune of %s",
   "trinkets.slot.chest.rune": "Rune",
   "attribute.name.stevesurvivors.physical_attack": "Physical Attack",
-  "itemGroup.stevesurvivors": "Steve Survivors"
+  "itemGroup.stevesurvivors": "Steve Survivors",
+  "death.attack.physical": "%s was slain by %s",
+  "death.attack.physical.item": "%s was slain by %s using %s",
+  "death.attack.magic_s": "%s was slain by magic of %s",
+  "death.attack.magic_s.item": "%s was slain by magic of %s using %s"
 }

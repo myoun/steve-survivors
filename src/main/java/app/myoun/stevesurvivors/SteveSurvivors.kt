@@ -5,10 +5,10 @@ import app.myoun.stevesurvivors.item.RuneItem
 import app.myoun.stevesurvivors.item.SteveItems
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents
+import net.fabricmc.fabric.api.event.player.AttackEntityCallback
 import net.fabricmc.fabric.api.item.v1.ModifyItemAttributeModifiersCallback
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
-import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
 import net.minecraft.registry.Registries
@@ -16,6 +16,7 @@ import net.minecraft.registry.Registry
 import net.minecraft.registry.RegistryKey
 import net.minecraft.server.MinecraftServer
 import net.minecraft.text.Text
+import net.minecraft.util.ActionResult
 import net.minecraft.util.Identifier
 import org.apache.logging.log4j.LogManager
 
@@ -62,12 +63,14 @@ object SteveSurvivors : ModInitializer {
             }
         }
 
-        ModifyItemAttributeModifiersCallback.EVENT.register { stack, slot, modifiers ->
-
+        AttackEntityCallback.EVENT.register { player, world, hand, entity, hitResult ->
+            if (player.isSpectator) return@register ActionResult.PASS
+            val physicalAttack = player.getAttributeValue(SteveAttributes.PHYSICAL_ATTACK.attribute).toFloat()
+            entity.damage(SteveDamageTypes.of(world, SteveDamageTypes.PHYSICAL), physicalAttack)
+            ActionResult.SUCCESS
         }
 
-        ServerPlayConnectionEvents.JOIN.register { handler, sender, server ->
-
+        ModifyItemAttributeModifiersCallback.EVENT.register { stack, slot, modifiers ->
         }
 
         ServerLifecycleEvents.SERVER_STARTED.register { server ->

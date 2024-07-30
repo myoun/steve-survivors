@@ -19,7 +19,17 @@ object SteveAttributes {
         AttributeModifierValue("generic.max_health", 1.0, EntityAttributeModifier.Operation.ADDITION)
     )
 
-    val allVanilla = all + listOf(HEALTH)
+    val ATTACK_SPEED = AttributePair(
+        fromVanilla("generic.attack_speed"),
+        AttributeModifierValue("generic.attack_speed", 0.5, EntityAttributeModifier.Operation.ADDITION)
+    )
+
+    val MOVEMENT_SPEED = AttributePair(
+        fromVanilla("generic.movement_speed"),
+        AttributeModifierValue("generic.movement_speed", 0.02, EntityAttributeModifier.Operation.ADDITION)
+    )
+
+    val allVanilla = all + listOf(HEALTH, ATTACK_SPEED, MOVEMENT_SPEED)
 
     fun fromVanilla(name: String): EntityAttribute {
         return Registries.ATTRIBUTE.get(Identifier("minecraft", name))!!
