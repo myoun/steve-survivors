@@ -1,6 +1,6 @@
 {
   "icon": "trinkets:gui/slots/charm",
   "validator_predicates": ["trinkets:tag"],
-  "amount": 5,
-  "order": 1
+  "amount": 15,
+  "order": 2
 }

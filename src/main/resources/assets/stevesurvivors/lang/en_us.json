@@ -1,6 +1,8 @@
 {
   "item.stevesurvivors.rune": "Rune of %s",
+  "item.stevesurvivors.fragment": "Fragment of %s",
   "trinkets.slot.chest.rune": "Rune",
+  "trinkets.slot.chest.fragment": "Fragment",
   "attribute.name.stevesurvivors.physical_attack": "Physical Attack",
   "itemGroup.stevesurvivors": "Steve Survivors",
   "death.attack.physical": "%s was slain by %s",

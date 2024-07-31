@@ -1,6 +1,7 @@
 package app.myoun.stevesurvivors
 
 import app.myoun.stevesurvivors.attribute.SteveAttributes
+import app.myoun.stevesurvivors.item.FragmentItem
 import app.myoun.stevesurvivors.item.RuneItem
 import app.myoun.stevesurvivors.item.SteveItems
 import net.fabricmc.api.ModInitializer
@@ -53,13 +54,31 @@ object SteveSurvivors : ModInitializer {
         }
 
         Registry.register(Registries.ITEM, Identifier(ID, "rune"), SteveItems.RUNE)
+        Registry.register(Registries.ITEM, Identifier(ID, "fragment"), SteveItems.FRAGMENT)
 
         Registry.register(Registries.ITEM_GROUP, ITEM_GROUP_KEY, ITEM_GROUP)
 
         ItemGroupEvents.modifyEntriesEvent(ITEM_GROUP_KEY).register { itemGroup ->
+            var lastRune: ItemStack? = null
+            var lastFragment: ItemStack? = null
             for (pair in SteveAttributes.allVanilla) {
-                val stack = RuneItem.createRuneItemStack(pair.attribute, pair.modifierValue)
-                itemGroup.add(stack)
+                val runeStack = RuneItem.createRuneItemStack(pair.attribute, pair.modifierValue)
+                val fragmentStack = FragmentItem.createFragmentItemStack(pair.attribute, pair.modifierValue)
+
+                if (lastRune == null) {
+                    itemGroup.add(runeStack)
+                } else {
+                    itemGroup.addAfter(lastRune, runeStack)
+                }
+
+                if (lastFragment == null) {
+                    itemGroup.add(fragmentStack)
+                } else {
+                    itemGroup.addAfter(lastFragment, fragmentStack)
+                }
+
+                lastRune = runeStack
+                lastFragment = fragmentStack
             }
         }
 
@@ -77,5 +96,7 @@ object SteveSurvivors : ModInitializer {
             SERVER = server
             LOGGER.info(Registries.ATTRIBUTE.get(Identifier("minecraft", "generic.attack_speed"))?.translationKey)
         }
+
+
     }
 }
