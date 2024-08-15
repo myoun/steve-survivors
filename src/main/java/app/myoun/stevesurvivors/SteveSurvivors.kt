@@ -20,6 +20,7 @@ import net.minecraft.text.Text
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Identifier
 import org.apache.logging.log4j.LogManager
+import kotlin.random.Random
 
 object SteveSurvivors : ModInitializer {
 
@@ -87,8 +88,23 @@ object SteveSurvivors : ModInitializer {
 
         AttackEntityCallback.EVENT.register { player, world, hand, entity, hitResult ->
             if (player.isSpectator) return@register ActionResult.PASS
-            val physicalAttack = player.getAttributeValue(SteveAttributes.PHYSICAL_ATTACK.attribute).toFloat()
-            entity.damage(SteveDamageTypes.of(world, SteveDamageTypes.PHYSICAL), physicalAttack)
+            val physicalAttack = player.getAttributeValue(SteveAttributes.PHYSICAL_ATTACK.attribute)
+            val criticalChance = player.getAttributeValue(SteveAttributes.CRITICAL_CHANCE.attribute)
+            val criticalDamage = player.getAttributeValue(SteveAttributes.CRITICAL_DAMAGE.attribute)
+
+            var damageMultiplier = 1.0
+            if (criticalChance < 100) {
+                val random = Random(System.currentTimeMillis()).nextDouble()
+                if (criticalChance > random*100) {
+                    damageMultiplier = criticalDamage
+                }
+            } else {
+                damageMultiplier = criticalDamage
+            }
+
+            val damage = (physicalAttack * damageMultiplier).toFloat()
+
+            entity.damage(SteveDamageTypes.of(world, SteveDamageTypes.PHYSICAL), damage)
             ActionResult.SUCCESS
         }
 

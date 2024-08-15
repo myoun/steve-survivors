@@ -7,6 +7,7 @@
   "attribute.name.stevesurvivors.physical_attack": "Physical Attack",
   "attribute.name.stevesurvivors.magic_attack": "Magic Attack",
   "attribute.name.stevesurvivors.critical_chance": "Critical Chance",
+  "attribute.name.stevesurvivors.critical_damage": "Critical Damage",
   "itemGroup.stevesurvivors": "Steve Survivors",
   "death.attack.physical": "%s was slain by %s",
   "death.attack.physical.item": "%s was slain by %s using %s",

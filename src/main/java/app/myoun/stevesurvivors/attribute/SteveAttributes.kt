@@ -24,10 +24,17 @@ object SteveAttributes {
 
     val CRITICAL_CHANCE = AttributePair(
         ClampedEntityAttribute("attribute.name.stevesurvivors.critical_chance", 0.0, 0.0, 100.0),
-        EntityAttributeModifier(nameUUID("critical_change"), "stevesurvivors.critical_chance", 20.0, EntityAttributeModifier.Operation.ADDITION)
+        EntityAttributeModifier(nameUUID("critical_chance"), "stevesurvivors.critical_chance", 20.0, EntityAttributeModifier.Operation.ADDITION)
     )
 
-    val all = listOf(PHYSICAL_ATTACK, MAGIC_ATTACK, CRITICAL_CHANCE)
+    val CRITICAL_DAMAGE = AttributePair(
+        ClampedEntityAttribute("attribute.name.stevesurvivors.critical_damage", 2.0, 0.0, 10.0),
+        EntityAttributeModifier(nameUUID("critical_damage"), "stevesurvivors.critical_damage", 0.2,
+            EntityAttributeModifier.Operation.MULTIPLY_BASE
+        )
+    )
+
+    val all = listOf(PHYSICAL_ATTACK, MAGIC_ATTACK, CRITICAL_CHANCE, CRITICAL_DAMAGE)
 
     val HEALTH = AttributePair(
         fromVanilla("generic.max_health"),

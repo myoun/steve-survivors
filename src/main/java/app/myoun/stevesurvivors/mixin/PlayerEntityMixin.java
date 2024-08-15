@@ -23,6 +23,9 @@ public class PlayerEntityMixin {
                 .add(EntityAttributes.GENERIC_ATTACK_SPEED)
                 .add(EntityAttributes.GENERIC_LUCK)
                 // new attributes
-                .add(SteveAttributes.INSTANCE.getPHYSICAL_ATTACK().getAttribute(), 1.0f);
+                .add(SteveAttributes.INSTANCE.getPHYSICAL_ATTACK().getAttribute(), 1.0f)
+                .add(SteveAttributes.INSTANCE.getMAGIC_ATTACK().getAttribute(), 0f)
+                .add(SteveAttributes.INSTANCE.getCRITICAL_CHANCE().getAttribute(), 0f)
+                .add(SteveAttributes.INSTANCE.getCRITICAL_DAMAGE().getAttribute(), 2f);
     }
 }
