@@ -56,6 +56,9 @@ object SteveSurvivors : ModInitializer {
         Registry.register(Registries.ITEM, Identifier(ID, "rune"), SteveItems.RUNE)
         Registry.register(Registries.ITEM, Identifier(ID, "fragment"), SteveItems.FRAGMENT)
 
+        // Weapon
+        Registry.register(Registries.ITEM, Identifier(ID, "destroy"), SteveItems.DESTROY)
+
         Registry.register(Registries.ITEM_GROUP, ITEM_GROUP_KEY, ITEM_GROUP)
 
         ItemGroupEvents.modifyEntriesEvent(ITEM_GROUP_KEY).register { itemGroup ->

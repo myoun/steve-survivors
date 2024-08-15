@@ -1,7 +1,7 @@
 package app.myoun.stevesurvivors.item
 
-import app.myoun.stevesurvivors.attribute.AttributeModifierValue
 import net.minecraft.entity.attribute.EntityAttribute
+import net.minecraft.entity.attribute.EntityAttributeModifier
 import net.minecraft.util.Rarity
 
 class RuneItem : AttributeItem(
@@ -9,7 +9,7 @@ class RuneItem : AttributeItem(
 ) {
 
     companion object {
-        fun createRuneItemStack(attribute: EntityAttribute, modifier: AttributeModifierValue) =
+        fun createRuneItemStack(attribute: EntityAttribute, modifier: EntityAttributeModifier) =
             createAttributeItemStack(SteveItems.RUNE, attribute, modifier)
     }
 

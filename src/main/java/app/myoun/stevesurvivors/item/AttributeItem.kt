@@ -1,6 +1,5 @@
 package app.myoun.stevesurvivors.item
 
-import app.myoun.stevesurvivors.attribute.AttributeModifierValue
 import com.google.common.collect.Multimap
 import dev.emi.trinkets.api.SlotReference
 import dev.emi.trinkets.api.TrinketItem
@@ -18,7 +17,7 @@ import java.util.UUID
 abstract class AttributeItem(settings: Settings) : TrinketItem(settings) {
 
     companion object {
-        fun createAttributeItemStack(item: Item, attribute: EntityAttribute, modifier: AttributeModifierValue): ItemStack? {
+        fun createAttributeItemStack(item: Item, attribute: EntityAttribute, modifier: EntityAttributeModifier): ItemStack? {
             val attributeId = Registries.ATTRIBUTE.getId(attribute) ?: return null
             val attributeTag = NbtCompound().also { tag ->
                 tag.putString("Name", attributeId.toString())

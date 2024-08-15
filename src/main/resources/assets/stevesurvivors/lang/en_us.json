@@ -1,9 +1,12 @@
 {
   "item.stevesurvivors.rune": "Rune of %s",
   "item.stevesurvivors.fragment": "Fragment of %s",
+  "item.stevesurvivors.destroy": "Destroy",
   "trinkets.slot.chest.rune": "Rune",
   "trinkets.slot.chest.fragment": "Fragment",
   "attribute.name.stevesurvivors.physical_attack": "Physical Attack",
+  "attribute.name.stevesurvivors.magic_attack": "Magic Attack",
+  "attribute.name.stevesurvivors.critical_chance": "Critical Chance",
   "itemGroup.stevesurvivors": "Steve Survivors",
   "death.attack.physical": "%s was slain by %s",
   "death.attack.physical.item": "%s was slain by %s using %s",
